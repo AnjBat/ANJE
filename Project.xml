@@ -6,7 +6,7 @@ xsi:schemaLocation="http://lime.openfl.org/project/1.0.4 http://lime.openfl.org/
 
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Friday Night Funkin': Andre Nicholas Jr Engine"
+	<app title="Friday Night Funkin': A-Slice (Old Engine Redux)"
 		 file="PsychEngine"
 		 packageName="com.anj.batx.engine"
 		 package="com.anj.batx.engine"
