@@ -98,7 +98,7 @@ class MainMenuState extends MusicBeatState
 		}
 
 		var padding:Float = 8;
-		var hrkVer:FlxText = new FlxText(padding, FlxG.height - 58 - padding, FlxG.width, "Andre Nicholas Jr Redux Engine " + hrkVersion, 12);
+		var hrkVer:FlxText = new FlxText(padding, FlxG.height - 58 - padding, FlxG.width, "A-Slice (H-Slice copy lol trying to be 100% accurate to h-slice loser) " + hrkVersion, 12);
 		var psychVer:FlxText = new FlxText(padding, FlxG.height - 38 - padding, FlxG.width, "Psych Engine " + psychEngineVersion, 12);
 		var fnfVer:FlxText = new FlxText(padding, FlxG.height - 18 - padding, FlxG.width, 'Friday Night Funkin\' v${funkinVersion} (P-slice ${pSliceVersion})', 12);
 
