@@ -43,7 +43,7 @@ class CrashState extends FlxState
 	{
 		if (Main.fpsVar != null)
 			Main.fpsVar.visible = false;
-		
+
 		super.create();
 		var previousScreen = new FlxSprite(0, 0, screenBelow);
 		previousScreen.setGraphicSize(FlxG.width, FlxG.height);
@@ -137,7 +137,7 @@ class CrashState extends FlxState
 	{
 		printToTrace('A-SLICE ${MainMenuState.pSliceVersion}  (${error.message})');
 		textNextY += 35;
-		
+
 		final enter:String = isTouchable ? 'A' : 'ENTER';
 		final escape:String = isTouchable ? 'B' : 'ESCAPE';
 
@@ -199,7 +199,7 @@ class CrashState extends FlxState
 		@:privateAccess // lazy
 		backend.CrashHandler.saveErrorMessage(errMsg + '\n');
 		#else
-		var path = './crash/' + 'ASlice_' + dateNow + '.txt';
+		var path = './crash/' + 'A-Slice_' + dateNow + '.txt';
 		File.saveContent(path, errMsg + '\n');
 		Sys.println(errMsg);
 		#end
@@ -229,7 +229,7 @@ typedef CrashData =
 {
 	message:String,
 	trace:Array<Array<String>>,
-	extendedTrace:Array<String>>,
+	extendedTrace:Array<String>,
 	date:String,
 	systemName:String,
 	activeMod:String
