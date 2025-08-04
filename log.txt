@@ -1,0 +1,1742 @@
+Creating D:/Github Projects/P-Slice-HRK-Engine-Redux/export/debug/windows/obj/obj/msvc1964-debug-nc/__pch/haxe/hxcpp.pch...
+hxcpp.cpp
+
+Compiling group: haxe
+cl.exe -Iinclude -IC:/HaxeToolkit/haxe/lib/hxdiscord_rpc/1,2,4/project/discord-rpc/include -DDISCORD_DISABLE_IO_THREAD -I D:/Github Projects/P-Slice-HRK-Engine-Redux/source/external/memory/include/ -IC:/HaxeToolkit/haxe/lib/hxvlc/1,8,2/project/vlc/include -IC:/HaxeToolkit/haxe/lib/linc_luajit/git//linc/ -nologo /WX- /fp:precise -DHX_WINDOWS -GR -Od(optim-std) -Zi(optim-std) -FdD:\Github Projects\P-Slice-HRK-Engine-Redux\export\debug\windows\obj\obj/msvc1964-debug-nc/vc.pdb(optim-std) -Zi(debug) -FdD:\Github Projects\P-Slice-HRK-Engine-Redux\export\debug\windows\obj\obj/msvc1964-debug-nc/vc.pdb(debug) -Od(debug) -O2(release) -bigobj -Os(optim-size) -FS -Oy- -c -EHs -GS- -IC:/HaxeToolkit/haxe/lib/hxcpp/4,3,2/include -DHXCPP_DEBUG -DHXCPP_M64 -DHXCPP_VISIT_ALLOCS(haxe) -DHXCPP_DEBUGGER(haxe) -DHXCPP_GC_BIG_BLOCKS(gc) -DHX_SMART_STRINGS(haxe) -DHXCPP_API_LEVEL=430(haxe) -D_CRT_SECURE_NO_DEPRECATE -D_ALLOW_MSC_VER_MISMATCH -D_ALLOW_ITERATOR_DEBUG_LEVEL_MISMATCH -wd4996 ... tags=[haxe,static]
+ - src/lime/utils/AssetCache.cpp  [haxe,release]
+Link: ApplicationMain-debug.exe
+hxcpp/debug/jsonrpc/Server.hx:86: Debug Server Started:
+hxcpp/debug/jsonrpc/Server.hx:592: Failed to connect to vsc debugger server at 127.0.0.1:6972
+[openfl.display.Shader] Info compiling vertex shader
+WARNING: 0:8: '' :  #version directive missing
+
+
+#ifdef GL_ES
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+#endif
+
+attribute float openfl_Alpha;
+		attribute vec4 openfl_ColorMultiplier;
+		attribute vec4 openfl_ColorOffset;
+		attribute vec4 openfl_Position;
+		attribute vec2 openfl_TextureCoord;
+
+		varying float openfl_Alphav;
+		varying vec4 openfl_ColorMultiplierv;
+		varying vec4 openfl_ColorOffsetv;
+		varying vec2 openfl_TextureCoordv;
+
+		uniform mat4 openfl_Matrix;
+		uniform bool openfl_HasColorTransform;
+		uniform vec2 openfl_TextureSize;
+
+		void main(void) {
+
+			openfl_Alphav = openfl_Alpha;
+		openfl_TextureCoordv = openfl_TextureCoord;
+
+		if (openfl_HasColorTransform) {
+
+			openfl_ColorMultiplierv = openfl_ColorMultiplier;
+			openfl_ColorOffsetv = openfl_ColorOffset / 255.0;
+
+		}
+
+		gl_Position = openfl_Matrix * openfl_Position;
+
+		}
+[openfl.display.Shader] Info compiling fragment shader
+WARNING: 0:8: '' :  #version directive missing
+
+
+#ifdef GL_ES
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+#endif
+
+varying float openfl_Alphav;
+		varying vec4 openfl_ColorMultiplierv;
+		varying vec4 openfl_ColorOffsetv;
+		varying vec2 openfl_TextureCoordv;
+
+		uniform bool openfl_HasColorTransform;
+		uniform sampler2D openfl_Texture;
+		uniform vec2 openfl_TextureSize;
+
+		void main(void) {
+
+			vec4 color = texture2D (openfl_Texture, openfl_TextureCoordv);
+
+		if (color.a == 0.0) {
+
+			gl_FragColor = vec4 (0.0, 0.0, 0.0, 0.0);
+
+		} else if (openfl_HasColorTransform) {
+
+			color = vec4 (color.rgb / color.a, color.a);
+
+			mat4 colorMultiplier = mat4 (0);
+			colorMultiplier[0][0] = openfl_ColorMultiplierv.x;
+			colorMultiplier[1][1] = openfl_ColorMultiplierv.y;
+			colorMultiplier[2][2] = openfl_ColorMultiplierv.z;
+			colorMultiplier[3][3] = 1.0; // openfl_ColorMultiplierv.w;
+
+			color = clamp (openfl_ColorOffsetv + (color * colorMultiplier), 0.0, 1.0);
+
+			if (color.a > 0.0) {
+
+				gl_FragColor = vec4 (color.rgb * color.a * openfl_Alphav, color.a * openfl_Alphav);
+
+			} else {
+
+				gl_FragColor = vec4 (0.0, 0.0, 0.0, 0.0);
+
+			}
+
+		} else {
+
+			gl_FragColor = color * openfl_Alphav;
+
+		}
+
+		}
+Console Available!
+VLC media player - 3.0.21 Vetinari
+Copyright © 1996-2024 the VideoLAN team
+revision 3.0.21-1-0-g9c4768291e
+configured with /builds/videolan/vlc/extras/package/win32/../../../configure  '--enable-update-check' '--enable-lua' '--enable-faad' '--enable-flac' '--enable-theora' '--enable-avcodec' '--enable-merge-ffmpeg' '--enable-dca' '--enable-mpc' '--enable-libass' '--enable-schroedinger' '--enable-realrtsp' '--enable-live555' '--enable-shout' '--enable-goom' '--enable-sse' '--enable-mmx' '--enable-libcddb' '--enable-zvbi' '--disable-telx' '--enable-nls' '--host=x86_64-w64-mingw32' '--with-contrib=../contrib/x86_64-w64-mingw32' '--with-breakpad=https://win.crashes.videolan.org' '--enable-qt' '--enable-skins2' '--enable-dvdread' '--enable-caca' 'host_alias=x86_64-w64-mingw32' 'CFLAGS= -D_WIN32_WINNT=0x0502 -DWINVER=0x502 -D__MSVCRT_VERSION__=0x700 ' 'CXXFLAGS= -D_WIN32_WINNT=0x0502 -DWINVER=0x502 -D__MSVCRT_VERSION__=0x700 ' 'PKG_CONFIG=pkg-config' 'PKG_CONFIG_LIBDIR=/usr/x86_64-w64-mingw32/lib/pkgconfig:/usr/lib/x86_64-w64-mingw32/pkgconfig'
+source/mikolka/vslice/components/FunkinSoundTray.hx:75: Custom tray added!
+source/backend/Discord.hx:77: Discord Client initialized
+source/objects/Alphabet.hx:322: Reloaded letters successfully (assets/shared/images/alphabet.json)!
+[openfl.display.Shader] Info compiling vertex shader
+WARNING: 0:8: '' :  #version directive missing
+
+
+#ifdef GL_ES
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+#endif
+
+attribute float openfl_Alpha;
+		attribute vec4 openfl_ColorMultiplier;
+		attribute vec4 openfl_ColorOffset;
+		attribute vec4 openfl_Position;
+		attribute vec2 openfl_TextureCoord;
+
+		varying float openfl_Alphav;
+		varying vec4 openfl_ColorMultiplierv;
+		varying vec4 openfl_ColorOffsetv;
+		varying vec2 openfl_TextureCoordv;
+
+		uniform mat4 openfl_Matrix;
+		uniform bool openfl_HasColorTransform;
+		uniform vec2 openfl_TextureSize;
+
+		void main(void) {
+
+			openfl_Alphav = openfl_Alpha;
+		openfl_TextureCoordv = openfl_TextureCoord;
+
+		if (openfl_HasColorTransform) {
+
+			openfl_ColorMultiplierv = openfl_ColorMultiplier;
+			openfl_ColorOffsetv = openfl_ColorOffset / 255.0;
+
+		}
+
+		gl_Position = openfl_Matrix * openfl_Position;
+
+		}
+[openfl.display.Shader] Info compiling fragment shader
+WARNING: 0:8: '' :  #version directive missing
+
+
+#ifdef GL_ES
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+#endif
+
+varying float openfl_Alphav;
+		varying vec4 openfl_ColorMultiplierv;
+		varying vec4 openfl_ColorOffsetv;
+		varying vec2 openfl_TextureCoordv;
+
+		uniform bool openfl_HasColorTransform;
+		uniform vec2 openfl_TextureSize;
+		uniform sampler2D bitmap;
+
+		void main(void) {
+
+			vec4 color = texture2D (bitmap, openfl_TextureCoordv);
+
+		if (color.a == 0.0) {
+
+			gl_FragColor = vec4 (0.0, 0.0, 0.0, 0.0);
+
+		} else if (openfl_HasColorTransform) {
+
+			color = vec4 (color.rgb / color.a, color.a);
+
+			mat4 colorMultiplier = mat4 (0);
+			colorMultiplier[0][0] = openfl_ColorMultiplierv.x;
+			colorMultiplier[1][1] = openfl_ColorMultiplierv.y;
+			colorMultiplier[2][2] = openfl_ColorMultiplierv.z;
+			colorMultiplier[3][3] = 1.0; // openfl_ColorMultiplierv.w;
+
+			color = clamp (openfl_ColorOffsetv + (color * colorMultiplier), 0.0, 1.0);
+
+			if (color.a > 0.0) {
+
+				gl_FragColor = vec4 (color.rgb * color.a * openfl_Alphav, color.a * openfl_Alphav);
+
+			} else {
+
+				gl_FragColor = vec4 (0.0, 0.0, 0.0, 0.0);
+
+			}
+
+		} else {
+
+			gl_FragColor = color * openfl_Alphav;
+
+		}
+
+		}
+[openfl.display.Shader] Info compiling vertex shader
+WARNING: 0:8: '' :  #version directive missing
+
+
+#ifdef GL_ES
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+#endif
+
+
+		attribute float openfl_Alpha;
+		attribute vec4 openfl_ColorMultiplier;
+		attribute vec4 openfl_ColorOffset;
+		attribute vec4 openfl_Position;
+		attribute vec2 openfl_TextureCoord;
+
+		varying float openfl_Alphav;
+		varying vec4 openfl_ColorMultiplierv;
+		varying vec4 openfl_ColorOffsetv;
+		varying vec2 openfl_TextureCoordv;
+
+		uniform mat4 openfl_Matrix;
+		uniform bool openfl_HasColorTransform;
+		uniform vec2 openfl_TextureSize;
+
+		
+		attribute float alpha;
+		attribute vec4 colorMultiplier;
+		attribute vec4 colorOffset;
+		uniform bool hasColorTransform;
+		
+		void main(void)
+		{
+			openfl_Alphav = openfl_Alpha;
+		openfl_TextureCoordv = openfl_TextureCoord;
+
+		if (openfl_HasColorTransform) {
+
+			openfl_ColorMultiplierv = openfl_ColorMultiplier;
+			openfl_ColorOffsetv = openfl_ColorOffset / 255.0;
+
+		}
+
+		gl_Position = openfl_Matrix * openfl_Position;
+
+			
+			openfl_Alphav = openfl_Alpha * alpha;
+			
+			if (hasColorTransform)
+			{
+				openfl_ColorOffsetv = colorOffset / 255.0;
+				openfl_ColorMultiplierv = colorMultiplier;
+			}
+		}
+[openfl.display.Shader] Info compiling fragment shader
+WARNING: 0:8: '' :  #version directive missing
+
+
+#ifdef GL_ES
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+#endif
+
+
+		varying float openfl_Alphav;
+		varying vec4 openfl_ColorMultiplierv;
+		varying vec4 openfl_ColorOffsetv;
+		varying vec2 openfl_TextureCoordv;
+
+		uniform bool openfl_HasColorTransform;
+		uniform vec2 openfl_TextureSize;
+		uniform sampler2D bitmap;
+
+		uniform bool hasTransform;
+		uniform bool hasColorTransform;
+
+		vec4 flixel_texture2D(sampler2D bitmap, vec2 coord)
+		{
+			vec4 color = texture2D(bitmap, coord);
+			if (!hasTransform)
+			{
+				return color;
+			}
+
+			if (color.a == 0.0)
+			{
+				return vec4(0.0, 0.0, 0.0, 0.0);
+			}
+
+			if (!hasColorTransform)
+			{
+				return color * openfl_Alphav;
+			}
+
+			color = vec4(color.rgb / color.a, color.a);
+
+			mat4 colorMultiplier = mat4(0);
+			colorMultiplier[0][0] = openfl_ColorMultiplierv.x;
+			colorMultiplier[1][1] = openfl_ColorMultiplierv.y;
+			colorMultiplier[2][2] = openfl_ColorMultiplierv.z;
+			colorMultiplier[3][3] = openfl_ColorMultiplierv.w;
+
+			color = clamp(openfl_ColorOffsetv + (color * colorMultiplier), 0.0, 1.0);
+
+			if (color.a > 0.0)
+			{
+				return vec4(color.rgb * color.a * openfl_Alphav, color.a * openfl_Alphav);
+			}
+			return vec4(0.0, 0.0, 0.0, 0.0);
+		}
+	
+		
+		void main(void)
+		{
+			gl_FragColor = flixel_texture2D(bitmap, openfl_TextureCoordv);
+		}
+[openfl.display.Shader] Info compiling vertex shader
+WARNING: 0:8: '' :  #version directive missing
+
+
+#ifdef GL_ES
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+#endif
+
+
+		attribute float openfl_Alpha;
+		attribute vec4 openfl_ColorMultiplier;
+		attribute vec4 openfl_ColorOffset;
+		attribute vec4 openfl_Position;
+		attribute vec2 openfl_TextureCoord;
+
+		varying float openfl_Alphav;
+		varying vec4 openfl_ColorMultiplierv;
+		varying vec4 openfl_ColorOffsetv;
+		varying vec2 openfl_TextureCoordv;
+
+		uniform mat4 openfl_Matrix;
+		uniform bool openfl_HasColorTransform;
+		uniform vec2 openfl_TextureSize;
+
+		attribute float alpha;
+		attribute vec4 colorMultiplier;
+		attribute vec4 colorOffset;
+		uniform bool hasColorTransform;
+		
+		void main(void)
+		{
+			openfl_Alphav = openfl_Alpha;
+			openfl_TextureCoordv = openfl_TextureCoord;
+
+			if (openfl_HasColorTransform) {
+				openfl_ColorMultiplierv = openfl_ColorMultiplier;
+				openfl_ColorOffsetv = openfl_ColorOffset / 255.0;
+			}
+
+			gl_Position = openfl_Matrix * openfl_Position;
+
+			openfl_Alphav = openfl_Alpha * alpha;
+			if (hasColorTransform)
+			{
+				openfl_ColorOffsetv = colorOffset / 255.0;
+				openfl_ColorMultiplierv = colorMultiplier;
+			}
+		}
+[openfl.display.Shader] Info compiling fragment shader
+WARNING: 0:8: '' :  #version directive missing
+
+
+#ifdef GL_ES
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+#endif
+
+
+		varying float openfl_Alphav;
+		varying vec4 openfl_ColorMultiplierv;
+		varying vec4 openfl_ColorOffsetv;
+		varying vec2 openfl_TextureCoordv;
+
+		uniform bool openfl_HasColorTransform;
+		uniform vec2 openfl_TextureSize;
+		uniform sampler2D bitmap;
+
+		uniform bool hasTransform;
+		uniform bool hasColorTransform;
+
+		vec4 flixel_texture2D(sampler2D bitmap, vec2 coord)
+		{
+			vec4 color = texture2D(bitmap, coord);
+			if (!hasTransform)
+			{
+				return color;
+			}
+
+			if (color.a == 0.0)
+			{
+				return vec4(0.0, 0.0, 0.0, 0.0);
+			}
+
+			if (!hasColorTransform)
+			{
+				return color * openfl_Alphav;
+			}
+
+			color = vec4(color.rgb / color.a, color.a);
+
+			mat4 colorMultiplier = mat4(0);
+			colorMultiplier[0][0] = openfl_ColorMultiplierv.x;
+			colorMultiplier[1][1] = openfl_ColorMultiplierv.y;
+			colorMultiplier[2][2] = openfl_ColorMultiplierv.z;
+			colorMultiplier[3][3] = openfl_ColorMultiplierv.w;
+
+			color = clamp(openfl_ColorOffsetv + (color * colorMultiplier), 0.0, 1.0);
+
+			if (color.a > 0.0)
+			{
+				return vec4(color.rgb * color.a * openfl_Alphav, color.a * openfl_Alphav);
+			}
+			return vec4(0.0, 0.0, 0.0, 0.0);
+		}
+
+		uniform vec3 uTime;
+		uniform bool awesomeOutline;
+
+		const float offset = 1.0 / 128.0;
+		vec3 normalizeColor(vec3 color)
+		{
+			return vec3(
+				color[0] / 255.0,
+				color[1] / 255.0,
+				color[2] / 255.0
+			);
+		}
+
+		vec3 rgb2hsv(vec3 c)
+		{
+			vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
+			vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));
+			vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));
+
+			float d = q.x - min(q.w, q.y);
+			float e = 1.0e-10;
+			return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
+		}
+
+		vec3 hsv2rgb(vec3 c)
+		{
+			vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+			vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
+			return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+		}
+
+		void main()
+		{
+			vec4 color = flixel_texture2D(bitmap, openfl_TextureCoordv);
+
+			vec4 swagColor = vec4(rgb2hsv(vec3(color[0], color[1], color[2])), color[3]);
+
+			// [0] is the hue???
+			swagColor[0] = swagColor[0] + uTime[0];
+			swagColor[1] = swagColor[1] + uTime[1];
+			swagColor[2] = swagColor[2] * (1.0 + uTime[2]);
+			
+			if(swagColor[1] < 0.0)
+			{
+				swagColor[1] = 0.0;
+			}
+			else if(swagColor[1] > 1.0)
+			{
+				swagColor[1] = 1.0;
+			}
+
+			color = vec4(hsv2rgb(vec3(swagColor[0], swagColor[1], swagColor[2])), swagColor[3]);
+
+			if (awesomeOutline)
+			{
+				 // Outline bullshit?
+				vec2 size = vec2(3, 3);
+
+				if (color.a <= 0.5) {
+					float w = size.x / openfl_TextureSize.x;
+					float h = size.y / openfl_TextureSize.y;
+					
+					if (flixel_texture2D(bitmap, vec2(openfl_TextureCoordv.x + w, openfl_TextureCoordv.y)).a != 0.
+					|| flixel_texture2D(bitmap, vec2(openfl_TextureCoordv.x - w, openfl_TextureCoordv.y)).a != 0.
+					|| flixel_texture2D(bitmap, vec2(openfl_TextureCoordv.x, openfl_TextureCoordv.y + h)).a != 0.
+					|| flixel_texture2D(bitmap, vec2(openfl_TextureCoordv.x, openfl_TextureCoordv.y - h)).a != 0.)
+						color = vec4(1.0, 1.0, 1.0, 1.0);
+				}
+			}
+			gl_FragColor = color;
+
+			/* 
+			if (color.a > 0.5)
+				gl_FragColor = color;
+			else
+			{
+				float a = flixel_texture2D(bitmap, vec2(openfl_TextureCoordv + offset, openfl_TextureCoordv.y)).a +
+						  flixel_texture2D(bitmap, vec2(openfl_TextureCoordv, openfl_TextureCoordv.y - offset)).a +
+						  flixel_texture2D(bitmap, vec2(openfl_TextureCoordv - offset, openfl_TextureCoordv.y)).a +
+						  flixel_texture2D(bitmap, vec2(openfl_TextureCoordv, openfl_TextureCoordv.y + offset)).a;
+				if (color.a < 1.0 && a > 0.0)
+					gl_FragColor = vec4(0.0, 0.0, 0.0, 0.8);
+				else
+					gl_FragColor = color;
+			} */
+		}
+source/backend/Discord.hx:55: (Discord) Connected to User (hrk.exex)
+source/backend/Discord.hx:118: Discord RPC Updated. Arguments: In the Menus, null, null, null, null, icon
+source/backend/Discord.hx:118: Discord RPC Updated. Arguments: In the Main Menus, null, null, null, null, icon
+[0GLoading Song (1/157)[0GLoading Song (2/157)[0GLoading Song (3/157)[0GLoading Song (4/157)[0GLoading Song (5/157)[0GLoading Song (6/157)[0GLoading Song (7/157)[0GLoading Song (8/157)[0GLoading Song (9/157)[0GLoading Song (10/157)[0GLoading Song (11/157)[0GLoading Song (12/157)[0GLoading Song (13/157)[0GLoading Song (14/157)[0GLoading Song (15/157)[0GLoading Song (16/157)[0GLoading Song (17/157)[0GLoading Song (18/157)[0GLoading Song (19/157)[0GLoading Song (20/157)[0GLoading Song (21/157)[0GLoading Song (22/157)[0GLoading Song (23/157)[0GLoading Song (24/157)[0GLoading Song (25/157)[0GLoading Song (26/157)[0GLoading Song (27/157)[0GLoading Song (28/157)[0GLoading Song (29/157)[0GLoading Song (30/157)[0GLoading Song (31/157)[0GLoading Song (32/157)[0GLoading Song (33/157)[0GLoading Song (34/157)[0GLoading Song (35/157)[0GLoading Song (36/157)[0GLoading Song (37/157)[0GLoading Song (38/157)[0GLoading Song (39/157)[0GLoading Song (40/157)[0GLoading Song (41/157)[0GLoading Song (42/157)[0GLoading Song (43/157)[0GLoading Song (44/157)[0GLoading Song (45/157)[0GLoading Song (46/157)[0GLoading Song (47/157)[0GLoading Song (48/157)[0GLoading Song (49/157)[0GLoading Song (50/157)[0GLoading Song (51/157)[0GLoading Song (52/157)[0GLoading Song (53/157)[0GLoading Song (54/157)[0GLoading Song (55/157)[0GLoading Song (56/157)[0GLoading Song (57/157)[0GLoading Song (58/157)[0GLoading Song (59/157)[0GLoading Song (60/157)[0GLoading Song (61/157)[0GLoading Song (62/157)[0GLoading Song (63/157)[0GLoading Song (64/157)[0GLoading Song (65/157)[0GLoading Song (66/157)[0GLoading Song (67/157)[0GLoading Song (68/157)[0GLoading Song (69/157)[0GLoading Song (70/157)[0GLoading Song (71/157)[0GLoading Song (72/157)[0GLoading Song (73/157)[0GLoading Song (74/157)[0GLoading Song (75/157)[0GLoading Song (76/157)[0GLoading Song (77/157)[0GLoading Song (78/157)[0GLoading Song (79/157)[0GLoading Song (80/157)[0GLoading Song (81/157)[0GLoading Song (82/157)[0GLoading Song (83/157)[0GLoading Song (84/157)[0GLoading Song (85/157)[0GLoading Song (86/157)[0GLoading Song (87/157)[0GLoading Song (88/157)[0GLoading Song (89/157)[0GLoading Song (90/157)[0GLoading Song (91/157)[0GLoading Song (92/157)[0GLoading Song (93/157)[0GLoading Song (94/157)[0GLoading Song (95/157)[0GLoading Song (96/157)[0GLoading Song (97/157)[0GLoading Song (98/157)[0GLoading Song (99/157)[0GLoading Song (100/157)[0GLoading Song (101/157)[0GLoading Song (102/157)[0GLoading Song (103/157)[0GLoading Song (104/157)[0GLoading Song (105/157)[0GLoading Song (106/157)[0GLoading Song (107/157)[0GLoading Song (108/157)[0GLoading Song (109/157)[0GLoading Song (110/157)[0GLoading Song (111/157)[0GLoading Song (112/157)[0GLoading Song (113/157)[0GLoading Song (114/157)[0GLoading Song (115/157)[0GLoading Song (116/157)[0GLoading Song (117/157)[0GLoading Song (118/157)[0GLoading Song (119/157)[0GLoading Song (120/157)[0GLoading Song (121/157)[0GLoading Song (122/157)[0GLoading Song (123/157)[0GLoading Song (124/157)[0GLoading Song (125/157)[0GLoading Song (126/157)[0GLoading Song (127/157)[0GLoading Song (128/157)[0GLoading Song (129/157)[0GLoading Song (130/157)[0GLoading Song (131/157)[0GLoading Song (132/157)[0GLoading Song (133/157)[0GLoading Song (134/157)[0GLoading Song (135/157)[0GLoading Song (136/157)[0GLoading Song (137/157)[0GLoading Song (138/157)[0GLoading Song (139/157)[0GLoading Song (140/157)[0GLoading Song (141/157)[0GLoading Song (142/157)[0GLoading Song (143/157)[0GLoading Song (144/157)[0GLoading Song (145/157)[0GLoading Song (146/157)[0GLoading Song (147/157)[0GLoading Song (148/157)[0GLoading Song (149/157)[0GLoading Song (150/157)[0GLoading Song (151/157)[0GLoading Song (152/157)[0GLoading Song (153/157)[0GLoading Song (154/157)[0GLoading Song (155/157)source/mikolka/compatibility/FreeplaySongData.hx:139: Directory assets/shared/data/inside-out does not exist! Inside Out has no charts (difficulties)!
+source/mikolka/compatibility/FreeplaySongData.hx:140: Forcing "normal" difficulty. Expect issues!!
+source/mikolka/vslice/freeplay/pslice/BPMCache.hx:18: Missing data folder for inside-out in assets/shared/data/inside-out for BPM scrapping!!
+[0GLoading Song (156/157)[0GLoading Song (157/157)
+[0GSetting Weeklist (1/157)[0GSetting Weeklist (2/157)[0GSetting Weeklist (3/157)[0GSetting Weeklist (4/157)[0GSetting Weeklist (5/157)[0GSetting Weeklist (6/157)[0GSetting Weeklist (7/157)[0GSetting Weeklist (8/157)[0GSetting Weeklist (9/157)[0GSetting Weeklist (10/157)[0GSetting Weeklist (11/157)[0GSetting Weeklist (12/157)[0GSetting Weeklist (13/157)[0GSetting Weeklist (14/157)[0GSetting Weeklist (15/157)[0GSetting Weeklist (16/157)[0GSetting Weeklist (17/157)[0GSetting Weeklist (18/157)[0GSetting Weeklist (19/157)[0GSetting Weeklist (20/157)[0GSetting Weeklist (21/157)[0GSetting Weeklist (22/157)[0GSetting Weeklist (27/157)[0GSetting Weeklist (28/157)[0GSetting Weeklist (29/157)[0GSetting Weeklist (30/157)[0GSetting Weeklist (31/157)[0GSetting Weeklist (32/157)[0GSetting Weeklist (33/157)[0GSetting Weeklist (34/157)[0GSetting Weeklist (35/157)[0GSetting Weeklist (36/157)[0GSetting Weeklist (37/157)[0GSetting Weeklist (38/157)[0GSetting Weeklist (39/157)[0GSetting Weeklist (40/157)[0GSetting Weeklist (41/157)[0GSetting Weeklist (42/157)[0GSetting Weeklist (54/157)[0GSetting Weeklist (55/157)[0GSetting Weeklist (56/157)[0GSetting Weeklist (57/157)[0GSetting Weeklist (58/157)[0GSetting Weeklist (59/157)[0GSetting Weeklist (60/157)[0GSetting Weeklist (61/157)[0GSetting Weeklist (62/157)[0GSetting Weeklist (63/157)[0GSetting Weeklist (64/157)[0GSetting Weeklist (65/157)[0GSetting Weeklist (66/157)[0GSetting Weeklist (67/157)[0GSetting Weeklist (68/157)[0GSetting Weeklist (69/157)[0GSetting Weeklist (70/157)[0GSetting Weeklist (71/157)[0GSetting Weeklist (72/157)[0GSetting Weeklist (73/157)[0GSetting Weeklist (74/157)[0GSetting Weeklist (75/157)[0GSetting Weeklist (76/157)[0GSetting Weeklist (77/157)[0GSetting Weeklist (78/157)[0GSetting Weeklist (79/157)[0GSetting Weeklist (80/157)[0GSetting Weeklist (81/157)[0GSetting Weeklist (82/157)[0GSetting Weeklist (83/157)[0GSetting Weeklist (84/157)[0GSetting Weeklist (85/157)[0GSetting Weeklist (86/157)[0GSetting Weeklist (87/157)[0GSetting Weeklist (88/157)[0GSetting Weeklist (89/157)[0GSetting Weeklist (90/157)[0GSetting Weeklist (91/157)[0GSetting Weeklist (92/157)[0GSetting Weeklist (93/157)[0GSetting Weeklist (94/157)[0GSetting Weeklist (95/157)[0GSetting Weeklist (96/157)[0GSetting Weeklist (97/157)[0GSetting Weeklist (98/157)[0GSetting Weeklist (99/157)[0GSetting Weeklist (100/157)[0GSetting Weeklist (101/157)[0GSetting Weeklist (102/157)[0GSetting Weeklist (103/157)[0GSetting Weeklist (104/157)[0GSetting Weeklist (105/157)[0GSetting Weeklist (106/157)[0GSetting Weeklist (107/157)[0GSetting Weeklist (108/157)[0GSetting Weeklist (109/157)[0GSetting Weeklist (110/157)[0GSetting Weeklist (111/157)[0GSetting Weeklist (112/157)[0GSetting Weeklist (113/157)[0GSetting Weeklist (114/157)[0GSetting Weeklist (115/157)[0GSetting Weeklist (116/157)[0GSetting Weeklist (117/157)[0GSetting Weeklist (118/157)[0GSetting Weeklist (119/157)[0GSetting Weeklist (120/157)[0GSetting Weeklist (121/157)[0GSetting Weeklist (122/157)[0GSetting Weeklist (123/157)[0GSetting Weeklist (124/157)[0GSetting Weeklist (125/157)[0GSetting Weeklist (126/157)[0GSetting Weeklist (127/157)[0GSetting Weeklist (128/157)[0GSetting Weeklist (129/157)[0GSetting Weeklist (130/157)[0GSetting Weeklist (131/157)[0GSetting Weeklist (132/157)[0GSetting Weeklist (133/157)[0GSetting Weeklist (134/157)[0GSetting Weeklist (135/157)[0GSetting Weeklist (136/157)[0GSetting Weeklist (137/157)[0GSetting Weeklist (138/157)[0GSetting Weeklist (139/157)[0GSetting Weeklist (140/157)[0GSetting Weeklist (141/157)[0GSetting Weeklist (142/157)[0GSetting Weeklist (143/157)[0GSetting Weeklist (144/157)[0GSetting Weeklist (145/157)[0GSetting Weeklist (146/157)[0GSetting Weeklist (147/157)[0GSetting Weeklist (148/157)[0GSetting Weeklist (149/157)[0GSetting Weeklist (150/157)[0GSetting Weeklist (151/157)[0GSetting Weeklist (152/157)[0GSetting Weeklist (153/157)[0GSetting Weeklist (154/157)[0GSetting Weeklist (155/157)[0GSetting Weeklist (156/157)[0GSetting Weeklist (157/157)
+source/mikolka/vslice/freeplay/FreeplayState.hx:366: 1280
+source/mikolka/vslice/freeplay/FreeplayState.hx:367: 1
+source/mikolka/vslice/freeplay/FreeplayState.hx:368: 1
+source/mikolka/vslice/freeplay/FreeplayState.hx:369: 1
+
+[0GSetting Song (2/126)[0GSetting Song (3/126)[0GSetting Song (4/126)[0GSetting Song (5/126)[0GSetting Song (6/126)[0GSetting Song (7/126)[0GSetting Song (8/126)[0GSetting Song (9/126)[0GSetting Song (10/126)[0GSetting Song (11/126)[0GSetting Song (12/126)[0GSetting Song (13/126)[0GSetting Song (14/126)[0GSetting Song (15/126)[0GSetting Song (16/126)[0GSetting Song (17/126)[0GSetting Song (18/126)[0GSetting Song (19/126)[0GSetting Song (20/126)[0GSetting Song (21/126)[0GSetting Song (22/126)[0GSetting Song (23/126)[0GSetting Song (24/126)[0GSetting Song (25/126)[0GSetting Song (26/126)[0GSetting Song (27/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character bambi3angry has no freeplay icon.
+[0GSetting Song (28/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character bambi3angry has no freeplay icon.
+[0GSetting Song (29/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character bambi3angry has no freeplay icon.
+[0GSetting Song (30/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character bambi3angry has no freeplay icon.
+[0GSetting Song (31/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character hrk has no freeplay icon.
+[0GSetting Song (32/126)[0GSetting Song (33/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character bambi3 has no freeplay icon.
+[0GSetting Song (34/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character bambi3 has no freeplay icon.
+[0GSetting Song (35/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character bambi3 has no freeplay icon.
+[0GSetting Song (36/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character bambi3angry has no freeplay icon.
+[0GSetting Song (37/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character bambi3angry has no freeplay icon.
+[0GSetting Song (38/126)[0GSetting Song (39/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character bambi3 has no freeplay icon.
+[0GSetting Song (40/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character bambi3angry has no freeplay icon.
+[0GSetting Song (41/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character bambi3angry has no freeplay icon.
+[0GSetting Song (42/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character bambi3 has no freeplay icon.
+[0GSetting Song (43/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character bambi3 has no freeplay icon.
+[0GSetting Song (44/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character bambi3 has no freeplay icon.
+[0GSetting Song (45/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character gh4 has no freeplay icon.
+[0GSetting Song (46/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character bambi3 has no freeplay icon.
+[0GSetting Song (47/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character bambi3angry has no freeplay icon.
+[0GSetting Song (48/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character undefined1old has no freeplay icon.
+[0GSetting Song (49/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character undefined1 has no freeplay icon.
+[0GSetting Song (50/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character hrk has no freeplay icon.
+[0GSetting Song (51/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character redacted has no freeplay icon.
+[0GSetting Song (52/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character redacted has no freeplay icon.
+[0GSetting Song (53/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character spaci2 has no freeplay icon.
+[0GSetting Song (54/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character quaternion has no freeplay icon.
+[0GSetting Song (55/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character Mefon has no freeplay icon.
+[0GSetting Song (56/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character bambi3 has no freeplay icon.
+[0GSetting Song (57/126)[0GSetting Song (58/126)[0GSetting Song (59/126)[0GSetting Song (60/126)[0GSetting Song (61/126)[0GSetting Song (62/126)[0GSetting Song (63/126)[0GSetting Song (64/126)[0GSetting Song (65/126)[0GSetting Song (66/126)[0GSetting Song (67/126)[0GSetting Song (68/126)[0GSetting Song (69/126)[0GSetting Song (70/126)[0GSetting Song (71/126)[0GSetting Song (72/126)[0GSetting Song (73/126)[0GSetting Song (74/126)[0GSetting Song (75/126)[0GSetting Song (76/126)[0GSetting Song (77/126)[0GSetting Song (78/126)[0GSetting Song (79/126)[0GSetting Song (80/126)[0GSetting Song (81/126)[0GSetting Song (82/126)[0GSetting Song (83/126)[0GSetting Song (84/126)[0GSetting Song (85/126)[0GSetting Song (86/126)[0GSetting Song (87/126)[0GSetting Song (88/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character bambisadfreeplay has no freeplay icon.
+[0GSetting Song (89/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character pissyboy has no freeplay icon.
+[0GSetting Song (90/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character pissyboy has no freeplay icon.
+[0GSetting Song (91/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character overthink has no freeplay icon.
+[0GSetting Song (92/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character angrymarelo has no freeplay icon.
+[0GSetting Song (93/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character angrymarelo has no freeplay icon.
+[0GSetting Song (94/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character garcello has no freeplay icon.
+[0GSetting Song (95/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character garcello has no freeplay icon.
+[0GSetting Song (96/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character bambi-3d has no freeplay icon.
+[0GSetting Song (97/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character bambi-unfair has no freeplay icon.
+[0GSetting Song (98/126)[0GSetting Song (99/126)[0GSetting Song (100/126)[0GSetting Song (101/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character tai has no freeplay icon.
+[0GSetting Song (102/126)[0GSetting Song (103/126)[0GSetting Song (104/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character nampi has no freeplay icon.
+[0GSetting Song (105/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character benson has no freeplay icon.
+[0GSetting Song (106/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character potent has no freeplay icon.
+[0GSetting Song (107/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character samber has no freeplay icon.
+[0GSetting Song (108/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character samber has no freeplay icon.
+[0GSetting Song (109/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character impossible has no freeplay icon.
+[0GSetting Song (110/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character bamb has no freeplay icon.
+[0GSetting Song (111/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character god has no freeplay icon.
+[0GSetting Song (112/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character meta has no freeplay icon.
+[0GSetting Song (113/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character bumbo has no freeplay icon.
+[0GSetting Song (114/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character idiot has no freeplay icon.
+[0GSetting Song (115/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character descarga has no freeplay icon.
+[0GSetting Song (116/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character bumbo has no freeplay icon.
+[0GSetting Song (117/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character linbi has no freeplay icon.
+[0GSetting Song (118/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character Chombi has no freeplay icon.
+[0GSetting Song (119/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character banbi has no freeplay icon.
+[0GSetting Song (120/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character hjoim has no freeplay icon.
+[0GSetting Song (121/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character bambisadfreeplay has no freeplay icon.
+[0GSetting Song (122/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character futilebambi has no freeplay icon.
+[0GSetting Song (123/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character nf has no freeplay icon.
+[0GSetting Song (124/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character gary has no freeplay icon.
+[0GSetting Song (125/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character nimbi has no freeplay icon.
+[0GSetting Song (126/126)source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character hrk has no freeplay icon.
+source/mikolka/vslice/freeplay/obj/PixelatedIcon.hx:51: [WARN] Character hrk has no freeplay icon.
+source/mikolka/compatibility/FreeplaySongData.hx:139: Directory assets/shared/data/inside-out does not exist! Inside Out has no charts (difficulties)!
+source/mikolka/compatibility/FreeplaySongData.hx:140: Forcing "normal" difficulty. Expect issues!!
+
+Loading Done
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:495: Successfully applied offset (boyfriend dj intro): 631.7, 362.6
+[openfl.display.Shader] Info compiling vertex shader
+WARNING: 0:8: '' :  #version directive missing
+
+
+#ifdef GL_ES
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+#endif
+
+attribute vec4 openfl_Position;
+		attribute vec2 openfl_TextureCoord;
+
+		uniform mat4 openfl_Matrix;
+
+		uniform vec2 uRadius;
+		varying vec2 vBlurCoords[7];
+		uniform vec2 uTextureSize;
+
+		void main(void) {
+
+			gl_Position = openfl_Matrix * openfl_Position;
+
+			vec2 r = uRadius / uTextureSize;
+			vBlurCoords[0] = openfl_TextureCoord - r;
+			vBlurCoords[1] = openfl_TextureCoord - r * 0.75;
+			vBlurCoords[2] = openfl_TextureCoord - r * 0.5;
+			vBlurCoords[3] = openfl_TextureCoord;
+			vBlurCoords[4] = openfl_TextureCoord + r * 0.5;
+			vBlurCoords[5] = openfl_TextureCoord + r * 0.75;
+			vBlurCoords[6] = openfl_TextureCoord + r;
+
+		}
+[openfl.display.Shader] Info compiling fragment shader
+WARNING: 0:8: '' :  #version directive missing
+
+
+#ifdef GL_ES
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+#endif
+
+uniform sampler2D openfl_Texture;
+
+		varying vec2 vBlurCoords[7];
+
+		void main(void) {
+
+			vec4 sum = vec4(0.0);
+			sum += texture2D(openfl_Texture, vBlurCoords[0]) * 0.00443;
+			sum += texture2D(openfl_Texture, vBlurCoords[1]) * 0.05399;
+			sum += texture2D(openfl_Texture, vBlurCoords[2]) * 0.24197;
+			sum += texture2D(openfl_Texture, vBlurCoords[3]) * 0.39894;
+			sum += texture2D(openfl_Texture, vBlurCoords[4]) * 0.24197;
+			sum += texture2D(openfl_Texture, vBlurCoords[5]) * 0.05399;
+			sum += texture2D(openfl_Texture, vBlurCoords[6]) * 0.00443;
+
+			gl_FragColor = sum;
+
+		}
+[openfl.display.Shader] Info compiling vertex shader
+WARNING: 0:8: '' :  #version directive missing
+
+
+#ifdef GL_ES
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+#endif
+
+attribute float openfl_Alpha;
+		attribute vec4 openfl_ColorMultiplier;
+		attribute vec4 openfl_ColorOffset;
+		attribute vec4 openfl_Position;
+		attribute vec2 openfl_TextureCoord;
+
+		varying float openfl_Alphav;
+		varying vec4 openfl_ColorMultiplierv;
+		varying vec4 openfl_ColorOffsetv;
+		varying vec2 openfl_TextureCoordv;
+
+		uniform mat4 openfl_Matrix;
+		uniform bool openfl_HasColorTransform;
+		uniform vec2 openfl_TextureSize;
+
+		attribute float alpha;
+		attribute vec4 colorMultiplier;
+		attribute vec4 colorOffset;
+		uniform bool hasColorTransform;
+
+		void main(void)
+		{
+			openfl_Alphav = openfl_Alpha;
+		openfl_TextureCoordv = openfl_TextureCoord;
+
+		if (openfl_HasColorTransform)
+		{
+			openfl_ColorMultiplierv = openfl_ColorMultiplier;
+			openfl_ColorOffsetv = openfl_ColorOffset / 255.0;
+		}
+
+		gl_Position = openfl_Matrix * openfl_Position;
+
+			openfl_Alphav = openfl_Alpha * alpha;
+
+			if (hasColorTransform)
+			{
+				openfl_ColorOffsetv = colorOffset / 255.0;
+				openfl_ColorMultiplierv = colorMultiplier;
+			}
+		}
+[openfl.display.Shader] Info compiling fragment shader
+WARNING: 0:8: '' :  #version directive missing
+
+
+#ifdef GL_ES
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+#endif
+
+varying float openfl_Alphav;
+		varying vec4 openfl_ColorMultiplierv;
+		varying vec4 openfl_ColorOffsetv;
+		varying vec2 openfl_TextureCoordv;
+
+		uniform bool openfl_HasColorTransform;
+		uniform vec2 openfl_TextureSize;
+		uniform sampler2D bitmap;
+
+		uniform bool hasTransform;
+		uniform bool hasColorTransform;
+
+		vec4 flixel_texture2D(sampler2D bitmap, vec2 coord)
+		{
+			vec4 color = texture2D(bitmap, coord);
+
+			if (!hasTransform)
+			{
+				return color;
+			}
+
+			if (color.a == 0.0)
+			{
+				return vec4(0.0, 0.0, 0.0, 0.0);
+			}
+
+			if (!hasColorTransform)
+			{
+				return color * openfl_Alphav;
+			}
+
+			color = vec4(color.rgb / color.a, color.a);
+
+			mat4 colorMultiplier = mat4(0);
+			colorMultiplier[0][0] = openfl_ColorMultiplierv.x;
+			colorMultiplier[1][1] = openfl_ColorMultiplierv.y;
+			colorMultiplier[2][2] = openfl_ColorMultiplierv.z;
+			colorMultiplier[3][3] = openfl_ColorMultiplierv.w;
+
+			color = clamp(openfl_ColorOffsetv + (color * colorMultiplier), 0.0, 1.0);
+
+			if (color.a > 0.0)
+			{
+				return vec4(color.rgb * color.a * openfl_Alphav, color.a * openfl_Alphav);
+			}
+
+			return vec4(0.0, 0.0, 0.0, 0.0);
+		}
+
+uniform float _hue;
+uniform float _sat;
+uniform float _val;
+
+vec3 normalizeColor(vec3 color)
+{
+    return vec3(
+        color[0] / 255.0,
+        color[1] / 255.0,
+        color[2] / 255.0
+    );
+}
+
+vec3 rgb2hsv(vec3 c)
+{
+    vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
+    vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));
+    vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));
+    float d = q.x - min(q.w, q.y);
+    float e = 1.0e-10;
+    return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
+}
+
+vec3 hsv2rgb(vec3 c)
+{
+    vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+    vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
+    return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+}
+
+void main() {
+  vec4 color = flixel_texture2D(bitmap, openfl_TextureCoordv);
+  vec4 swagColor = vec4(rgb2hsv(vec3(color[0], color[1], color[2])), color[3]);
+  swagColor.x *= _hue;
+  swagColor.y *= _sat;
+  swagColor.z *= _val;
+  // approximate "lightness" changing!!
+  swagColor.z *= (_hue * 0.5) + 0.5;
+  color = vec4(hsv2rgb(vec3(swagColor[0], swagColor[1], swagColor[2])), swagColor[3]);
+	gl_FragColor = color;
+}
+
+
+[openfl.display.Shader] Info compiling vertex shader
+WARNING: 0:8: '' :  #version directive missing
+
+
+#ifdef GL_ES
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+#endif
+
+attribute float openfl_Alpha;
+		attribute vec4 openfl_ColorMultiplier;
+		attribute vec4 openfl_ColorOffset;
+		attribute vec4 openfl_Position;
+		attribute vec2 openfl_TextureCoord;
+
+		varying float openfl_Alphav;
+		varying vec4 openfl_ColorMultiplierv;
+		varying vec4 openfl_ColorOffsetv;
+		varying vec2 openfl_TextureCoordv;
+
+		uniform mat4 openfl_Matrix;
+		uniform bool openfl_HasColorTransform;
+		uniform vec2 openfl_TextureSize;
+
+		attribute float alpha;
+		attribute vec4 colorMultiplier;
+		attribute vec4 colorOffset;
+		uniform bool hasColorTransform;
+
+		void main(void)
+		{
+			openfl_Alphav = openfl_Alpha;
+		openfl_TextureCoordv = openfl_TextureCoord;
+
+		if (openfl_HasColorTransform)
+		{
+			openfl_ColorMultiplierv = openfl_ColorMultiplier;
+			openfl_ColorOffsetv = openfl_ColorOffset / 255.0;
+		}
+
+		gl_Position = openfl_Matrix * openfl_Position;
+
+			openfl_Alphav = openfl_Alpha * alpha;
+
+			if (hasColorTransform)
+			{
+				openfl_ColorOffsetv = colorOffset / 255.0;
+				openfl_ColorMultiplierv = colorMultiplier;
+			}
+		}
+[openfl.display.Shader] Info compiling fragment shader
+WARNING: 0:8: '' :  #version directive missing
+
+
+#ifdef GL_ES
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+#endif
+
+varying float openfl_Alphav;
+		varying vec4 openfl_ColorMultiplierv;
+		varying vec4 openfl_ColorOffsetv;
+		varying vec2 openfl_TextureCoordv;
+
+		uniform bool openfl_HasColorTransform;
+		uniform vec2 openfl_TextureSize;
+		uniform sampler2D bitmap;
+
+		uniform bool hasTransform;
+		uniform bool hasColorTransform;
+
+		vec4 flixel_texture2D(sampler2D bitmap, vec2 coord)
+		{
+			vec4 color = texture2D(bitmap, coord);
+
+			if (!hasTransform)
+			{
+				return color;
+			}
+
+			if (color.a == 0.0)
+			{
+				return vec4(0.0, 0.0, 0.0, 0.0);
+			}
+
+			if (!hasColorTransform)
+			{
+				return color * openfl_Alphav;
+			}
+
+			color = vec4(color.rgb / color.a, color.a);
+
+			mat4 colorMultiplier = mat4(0);
+			colorMultiplier[0][0] = openfl_ColorMultiplierv.x;
+			colorMultiplier[1][1] = openfl_ColorMultiplierv.y;
+			colorMultiplier[2][2] = openfl_ColorMultiplierv.z;
+			colorMultiplier[3][3] = openfl_ColorMultiplierv.w;
+
+			color = clamp(openfl_ColorOffsetv + (color * colorMultiplier), 0.0, 1.0);
+
+			if (color.a > 0.0)
+			{
+				return vec4(color.rgb * color.a * openfl_Alphav, color.a * openfl_Alphav);
+			}
+
+			return vec4(0.0, 0.0, 0.0, 0.0);
+		}
+
+		// Modified version of a tilt shift shader from Martin Jonasson (http://grapefrukt.com/)
+		// Read http://notes.underscorediscovery.com/ for context on shaders and this file
+		// License : MIT
+
+			/*
+				Take note that blurring in a single pass (the two for loops below) is more expensive than separating
+				the x and the y blur into different passes. This was used where bleeding edge performance
+				was not crucial and is to illustrate a point.
+
+				The reason two passes is cheaper?
+				   texture2D is a fairly high cost call, sampling a texture.
+
+				   So, in a single pass, like below, there are 3 steps, per x and y.
+
+				   That means a total of 9 "taps", it touches the texture to sample 9 times.
+
+				   Now imagine we apply this to some geometry, that is equal to 16 pixels on screen (tiny)
+				   (16 * 16) * 9 = 2304 samples taken, for width * height number of pixels, * 9 taps
+				   Now, if you split them up, it becomes 3 for x, and 3 for y, a total of 6 taps
+				   (16 * 16) * 6 = 1536 samples
+
+				   That\'s on a *tiny* sprite, let\'s scale that up to 128x128 sprite...
+				   (128 * 128) * 9 = 147,456
+				   (128 * 128) * 6 =  98,304
+
+				   That\'s 33.33..% cheaper for splitting them up.
+				   That\'s with 3 steps, with higher steps (more taps per pass...)
+
+				   A really smooth, 6 steps, 6*6 = 36 taps for one pass, 12 taps for two pass
+				   You will notice, the curve is not linear, at 12 steps it\'s 144 vs 24 taps
+				   It becomes orders of magnitude slower to do single pass!
+				   Therefore, you split them up into two passes, one for x, one for y.
+			*/
+
+		// I am hardcoding the constants like a jerk
+
+		const float bluramount  = 1.0;
+		const float center      = 1.0;
+		const float stepSize    = 0.004;
+		const float steps       = 3.0;
+
+		const float minOffs     = (float(steps-1.0)) / -2.0;
+		const float maxOffs     = (float(steps-1.0)) / +2.0;
+
+
+		vec4 blur9(sampler2D image, vec2 uv, vec2 resolution, vec2 direction) {
+
+      vec4 color = vec4(0.0);
+			vec2 off1 = vec2(1.3846153846) * direction;
+			vec2 off2 = vec2(3.2307692308) * direction;
+			color += texture2D(image, uv) * 0.2270270270;
+			color += texture2D(image, uv + (off1 / resolution)) * 0.3162162162;
+			color += texture2D(image, uv - (off1 / resolution)) * 0.3162162162;
+			color += texture2D(image, uv + (off2 / resolution)) * 0.0702702703;
+			color += texture2D(image, uv - (off2 / resolution)) * 0.0702702703;
+			return color;
+		}
+
+		vec4 blur13(sampler2D image, vec2 uv, vec2 resolution, vec2 direction) {
+			vec4 color = vec4(0.0);
+			vec2 off1 = vec2(1.411764705882353) * direction;
+			vec2 off2 = vec2(3.2941176470588234) * direction;
+			vec2 off3 = vec2(5.176470588235294) * direction;
+			color += texture2D(image, uv) * 0.1964825501511404;
+			color += texture2D(image, uv + (off1 / resolution)) * 0.2969069646728344;
+			color += texture2D(image, uv - (off1 / resolution)) * 0.2969069646728344;
+			color += texture2D(image, uv + (off2 / resolution)) * 0.09447039785044732;
+			color += texture2D(image, uv - (off2 / resolution)) * 0.09447039785044732;
+			color += texture2D(image, uv + (off3 / resolution)) * 0.010381362401148057;
+			color += texture2D(image, uv - (off3 / resolution)) * 0.010381362401148057;
+			return color;
+		}
+
+    uniform float _amount;
+
+		void main()
+    {
+
+			vec4 blurred;
+
+
+			vec4 blurredShit = blur13(bitmap, openfl_TextureCoordv, openfl_TextureSize.xy, vec2(0.0, _amount * 2.0));
+			blurredShit = mix(blur13(bitmap, openfl_TextureCoordv, openfl_TextureSize.xy, vec2(_amount * 2.0, 0.0)), blurredShit, 0.5);
+
+			// Work out how much to blur based on the mid point
+			// _amount = pow((openfl_TextureCoordv.y * center) * 2.0 - 1.0, 2.0) * bluramount;
+
+			// This is the accumulation of color from the surrounding pixels in the texture
+			blurred = vec4(0.0, 0.0, 0.0, 1.0);
+
+			// From minimum offset to maximum offset
+			for (float offsX = minOffs; offsX <= maxOffs; ++offsX) {
+				for (float offsY = minOffs; offsY <= maxOffs; ++offsY) {
+
+					// copy the coord so we can mess with it
+					vec2 temp_tcoord = openfl_TextureCoordv.xy;
+
+					//work out which uv we want to sample now
+					temp_tcoord.x += offsX * _amount * stepSize;
+					temp_tcoord.y += offsY * _amount * stepSize;
+
+					// accumulate the sample
+					blurred += texture2D(bitmap, temp_tcoord);
+				}
+			}
+
+			// because we are doing an average, we divide by the amount (x AND y, hence steps * steps)
+			blurred /= float(steps * steps);
+
+			// return the final blurred color
+			gl_FragColor = blurredShit;
+    }
+
+[openfl.display.Shader] Info compiling vertex shader
+WARNING: 0:8: '' :  #version directive missing
+
+
+#ifdef GL_ES
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+#endif
+
+
+		attribute float openfl_Alpha;
+		attribute vec4 openfl_ColorMultiplier;
+		attribute vec4 openfl_ColorOffset;
+		attribute vec4 openfl_Position;
+		attribute vec2 openfl_TextureCoord;
+
+		varying float openfl_Alphav;
+		varying vec4 openfl_ColorMultiplierv;
+		varying vec4 openfl_ColorOffsetv;
+		varying vec2 openfl_TextureCoordv;
+
+		uniform mat4 openfl_Matrix;
+		uniform bool openfl_HasColorTransform;
+		uniform vec2 openfl_TextureSize;
+
+		
+		attribute float alpha;
+		attribute vec4 colorMultiplier;
+		attribute vec4 colorOffset;
+		uniform bool hasColorTransform;
+		
+		void main(void)
+		{
+			openfl_Alphav = openfl_Alpha;
+		openfl_TextureCoordv = openfl_TextureCoord;
+
+		if (openfl_HasColorTransform) {
+
+			openfl_ColorMultiplierv = openfl_ColorMultiplier;
+			openfl_ColorOffsetv = openfl_ColorOffset / 255.0;
+
+		}
+
+		gl_Position = openfl_Matrix * openfl_Position;
+
+			
+			openfl_Alphav = openfl_Alpha * alpha;
+			
+			if (hasColorTransform)
+			{
+				openfl_ColorOffsetv = colorOffset / 255.0;
+				openfl_ColorMultiplierv = colorMultiplier;
+			}
+		}
+[openfl.display.Shader] Info compiling fragment shader
+WARNING: 0:8: '' :  #version directive missing
+
+
+#ifdef GL_ES
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+#endif
+
+
+       varying float openfl_Alphav;
+		varying vec4 openfl_ColorMultiplierv;
+		varying vec4 openfl_ColorOffsetv;
+		varying vec2 openfl_TextureCoordv;
+
+		uniform bool openfl_HasColorTransform;
+		uniform vec2 openfl_TextureSize;
+		uniform sampler2D bitmap;
+
+		uniform bool hasTransform;
+		uniform bool hasColorTransform;
+
+		vec4 flixel_texture2D(sampler2D bitmap, vec2 coord)
+		{
+			vec4 color = texture2D(bitmap, coord);
+			if (!hasTransform)
+			{
+				return color;
+			}
+
+			if (color.a == 0.0)
+			{
+				return vec4(0.0, 0.0, 0.0, 0.0);
+			}
+
+			if (!hasColorTransform)
+			{
+				return color * openfl_Alphav;
+			}
+
+			color = vec4(color.rgb / color.a, color.a);
+
+			mat4 colorMultiplier = mat4(0);
+			colorMultiplier[0][0] = openfl_ColorMultiplierv.x;
+			colorMultiplier[1][1] = openfl_ColorMultiplierv.y;
+			colorMultiplier[2][2] = openfl_ColorMultiplierv.z;
+			colorMultiplier[3][3] = openfl_ColorMultiplierv.w;
+
+			color = clamp(openfl_ColorOffsetv + (color * colorMultiplier), 0.0, 1.0);
+
+			if (color.a > 0.0)
+			{
+				return vec4(color.rgb * color.a * openfl_Alphav, color.a * openfl_Alphav);
+			}
+			return vec4(0.0, 0.0, 0.0, 0.0);
+		}
+	
+
+
+        // Value from (0, 1)
+        uniform float fadeAmt;
+
+        // fade the image to blue as it fades to black
+
+        void main()
+        {
+          vec4 tex = flixel_texture2D(bitmap, openfl_TextureCoordv);
+
+          vec4 finalColor = mix(vec4(vec4(0.0, 0.0, tex.b, tex.a) * fadeAmt), vec4(tex * fadeAmt), fadeAmt);
+
+          // Output to screen
+          gl_FragColor = finalColor;
+        }
+
+    
+[openfl.display.Shader] Info compiling vertex shader
+WARNING: 0:8: '' :  #version directive missing
+
+
+#ifdef GL_ES
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+#endif
+
+
+		attribute float openfl_Alpha;
+		attribute vec4 openfl_ColorMultiplier;
+		attribute vec4 openfl_ColorOffset;
+		attribute vec4 openfl_Position;
+		attribute vec2 openfl_TextureCoord;
+
+		varying float openfl_Alphav;
+		varying vec4 openfl_ColorMultiplierv;
+		varying vec4 openfl_ColorOffsetv;
+		varying vec2 openfl_TextureCoordv;
+
+		uniform mat4 openfl_Matrix;
+		uniform bool openfl_HasColorTransform;
+		uniform vec2 openfl_TextureSize;
+
+		
+		attribute float alpha;
+		attribute vec4 colorMultiplier;
+		attribute vec4 colorOffset;
+		uniform bool hasColorTransform;
+		
+		void main(void)
+		{
+			openfl_Alphav = openfl_Alpha;
+		openfl_TextureCoordv = openfl_TextureCoord;
+
+		if (openfl_HasColorTransform) {
+
+			openfl_ColorMultiplierv = openfl_ColorMultiplier;
+			openfl_ColorOffsetv = openfl_ColorOffset / 255.0;
+
+		}
+
+		gl_Position = openfl_Matrix * openfl_Position;
+
+			
+			openfl_Alphav = openfl_Alpha * alpha;
+			
+			if (hasColorTransform)
+			{
+				openfl_ColorOffsetv = colorOffset / 255.0;
+				openfl_ColorMultiplierv = colorMultiplier;
+			}
+		}
+[openfl.display.Shader] Info compiling fragment shader
+WARNING: 0:8: '' :  #version directive missing
+
+
+#ifdef GL_ES
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+#endif
+
+
+    varying float openfl_Alphav;
+		varying vec4 openfl_ColorMultiplierv;
+		varying vec4 openfl_ColorOffsetv;
+		varying vec2 openfl_TextureCoordv;
+
+		uniform bool openfl_HasColorTransform;
+		uniform vec2 openfl_TextureSize;
+		uniform sampler2D bitmap;
+
+		uniform bool hasTransform;
+		uniform bool hasColorTransform;
+
+		vec4 flixel_texture2D(sampler2D bitmap, vec2 coord)
+		{
+			vec4 color = texture2D(bitmap, coord);
+			if (!hasTransform)
+			{
+				return color;
+			}
+
+			if (color.a == 0.0)
+			{
+				return vec4(0.0, 0.0, 0.0, 0.0);
+			}
+
+			if (!hasColorTransform)
+			{
+				return color * openfl_Alphav;
+			}
+
+			color = vec4(color.rgb / color.a, color.a);
+
+			mat4 colorMultiplier = mat4(0);
+			colorMultiplier[0][0] = openfl_ColorMultiplierv.x;
+			colorMultiplier[1][1] = openfl_ColorMultiplierv.y;
+			colorMultiplier[2][2] = openfl_ColorMultiplierv.z;
+			colorMultiplier[3][3] = openfl_ColorMultiplierv.w;
+
+			color = clamp(openfl_ColorOffsetv + (color * colorMultiplier), 0.0, 1.0);
+
+			if (color.a > 0.0)
+			{
+				return vec4(color.rgb * color.a * openfl_Alphav, color.a * openfl_Alphav);
+			}
+			return vec4(0.0, 0.0, 0.0, 0.0);
+		}
+	
+
+
+    uniform vec3 extraTint;
+
+    uniform vec2 endPosition;
+    vec2 hash22(vec2 p) {
+      vec3 p3 = fract(vec3(p.xyx) * vec3(.1031, .1030, .0973));
+      p3 += dot(p3, p3.yzx + 33.33);
+      return fract((p3.xx + p3.yz) * p3.zy);
+    }
+
+
+
+    // ====== GAMMA CORRECTION ====== //
+    // Helps with color mixing -- good to have by default in almost any shader
+    // See https://www.shadertoy.com/view/lscSzl
+    vec3 gamma(in vec3 color) {
+      return pow(color, vec3(1.0 / 2.2));
+    }
+
+    vec4 mainPass(vec2 fragCoord) {
+      vec4 base = texture2D(bitmap, fragCoord);
+
+      vec2 uv = fragCoord.xy;
+
+      vec2 start = vec2(0.0, 0.0);
+      vec2 end = vec2(endPosition.x / openfl_TextureSize.x, 1.0);
+
+      float dx = end.x - start.x;
+      float dy = end.y - start.y;
+
+      float angle = atan(dy, dx);
+
+      uv.x -= start.x;
+      uv.y -= start.y;
+
+      float uvA = atan(uv.y, uv.x);
+
+      if (uvA < angle)
+        return base;
+      else
+        return vec4(0.0);
+    }
+
+    vec4 antialias(vec2 fragCoord) {
+
+      const float AA_STAGES = 2.0;
+
+      const float AA_TOTAL_PASSES = AA_STAGES * AA_STAGES + 1.0;
+      const float AA_JITTER = 0.5;
+
+      // Run the shader multiple times with a random subpixel offset each time and average the results
+      vec4 color = mainPass(fragCoord);
+      for (float x = 0.0; x < AA_STAGES; x++)
+      {
+          for (float y = 0.0; y < AA_STAGES; y++)
+          {
+              vec2 offset = AA_JITTER * (2.0 * hash22(vec2(x, y)) - 1.0) / openfl_TextureSize.xy;
+              color += mainPass(fragCoord + offset);
+          }
+      }
+      return color / AA_TOTAL_PASSES;
+    }
+
+    void main() {
+      vec4 col = antialias(openfl_TextureCoordv);
+      col.xyz = col.xyz * extraTint.xyz;
+      // col.xyz = gamma(col.xyz);
+      gl_FragColor = col;
+    }
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:495: Successfully applied offset (Boyfriend DJ): 625, 360
+[openfl.display.Shader] Info compiling vertex shader
+WARNING: 0:8: '' :  #version directive missing
+
+
+#ifdef GL_ES
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+#endif
+
+
+		attribute float openfl_Alpha;
+		attribute vec4 openfl_ColorMultiplier;
+		attribute vec4 openfl_ColorOffset;
+		attribute vec4 openfl_Position;
+		attribute vec2 openfl_TextureCoord;
+
+		varying float openfl_Alphav;
+		varying vec4 openfl_ColorMultiplierv;
+		varying vec4 openfl_ColorOffsetv;
+		varying vec2 openfl_TextureCoordv;
+
+		uniform mat4 openfl_Matrix;
+		uniform bool openfl_HasColorTransform;
+		uniform vec2 openfl_TextureSize;
+
+		
+		attribute float alpha;
+		attribute vec4 colorMultiplier;
+		attribute vec4 colorOffset;
+		uniform bool hasColorTransform;
+		
+		void main(void)
+		{
+			openfl_Alphav = openfl_Alpha;
+		openfl_TextureCoordv = openfl_TextureCoord;
+
+		if (openfl_HasColorTransform) {
+
+			openfl_ColorMultiplierv = openfl_ColorMultiplier;
+			openfl_ColorOffsetv = openfl_ColorOffset / 255.0;
+
+		}
+
+		gl_Position = openfl_Matrix * openfl_Position;
+
+			
+			openfl_Alphav = openfl_Alpha * alpha;
+			
+			if (hasColorTransform)
+			{
+				openfl_ColorOffsetv = colorOffset / 255.0;
+				openfl_ColorMultiplierv = colorMultiplier;
+			}
+		}
+[openfl.display.Shader] Info compiling fragment shader
+WARNING: 0:8: '' :  #version directive missing
+
+
+#ifdef GL_ES
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+#endif
+
+
+        varying float openfl_Alphav;
+		varying vec4 openfl_ColorMultiplierv;
+		varying vec4 openfl_ColorOffsetv;
+		varying vec2 openfl_TextureCoordv;
+
+		uniform bool openfl_HasColorTransform;
+		uniform vec2 openfl_TextureSize;
+		uniform sampler2D bitmap;
+
+		uniform bool hasTransform;
+		uniform bool hasColorTransform;
+
+		vec4 flixel_texture2D(sampler2D bitmap, vec2 coord)
+		{
+			vec4 color = texture2D(bitmap, coord);
+			if (!hasTransform)
+			{
+				return color;
+			}
+
+			if (color.a == 0.0)
+			{
+				return vec4(0.0, 0.0, 0.0, 0.0);
+			}
+
+			if (!hasColorTransform)
+			{
+				return color * openfl_Alphav;
+			}
+
+			color = vec4(color.rgb / color.a, color.a);
+
+			mat4 colorMultiplier = mat4(0);
+			colorMultiplier[0][0] = openfl_ColorMultiplierv.x;
+			colorMultiplier[1][1] = openfl_ColorMultiplierv.y;
+			colorMultiplier[2][2] = openfl_ColorMultiplierv.z;
+			colorMultiplier[3][3] = openfl_ColorMultiplierv.w;
+
+			color = clamp(openfl_ColorOffsetv + (color * colorMultiplier), 0.0, 1.0);
+
+			if (color.a > 0.0)
+			{
+				return vec4(color.rgb * color.a * openfl_Alphav, color.a * openfl_Alphav);
+			}
+			return vec4(0.0, 0.0, 0.0, 0.0);
+		}
+	
+
+
+        uniform vec4 funnyColor;
+        uniform bool colSet;
+
+        void main()
+        {
+            vec4 color = flixel_texture2D(bitmap, openfl_TextureCoordv);
+
+            if (color.a > 0.0 && colSet)
+                color = vec4(funnyColor.r, funnyColor.g, funnyColor.b, color.a);
+
+            gl_FragColor = color;
+        }
+    
+[openfl.display.Shader] Info compiling vertex shader
+WARNING: 0:8: '' :  #version directive missing
+
+
+#ifdef GL_ES
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+#endif
+
+
+		attribute float openfl_Alpha;
+		attribute vec4 openfl_ColorMultiplier;
+		attribute vec4 openfl_ColorOffset;
+		attribute vec4 openfl_Position;
+		attribute vec2 openfl_TextureCoord;
+
+		varying float openfl_Alphav;
+		varying vec4 openfl_ColorMultiplierv;
+		varying vec4 openfl_ColorOffsetv;
+		varying vec2 openfl_TextureCoordv;
+
+		uniform mat4 openfl_Matrix;
+		uniform bool openfl_HasColorTransform;
+		uniform vec2 openfl_TextureSize;
+
+		
+		attribute float alpha;
+		attribute vec4 colorMultiplier;
+		attribute vec4 colorOffset;
+		uniform bool hasColorTransform;
+		
+		void main(void)
+		{
+			openfl_Alphav = openfl_Alpha;
+		openfl_TextureCoordv = openfl_TextureCoord;
+
+		if (openfl_HasColorTransform) {
+
+			openfl_ColorMultiplierv = openfl_ColorMultiplier;
+			openfl_ColorOffsetv = openfl_ColorOffset / 255.0;
+
+		}
+
+		gl_Position = openfl_Matrix * openfl_Position;
+
+			
+			openfl_Alphav = openfl_Alpha * alpha;
+			
+			if (hasColorTransform)
+			{
+				openfl_ColorOffsetv = colorOffset / 255.0;
+				openfl_ColorMultiplierv = colorMultiplier;
+			}
+		}
+[openfl.display.Shader] Info compiling fragment shader
+WARNING: 0:8: '' :  #version directive missing
+
+
+#ifdef GL_ES
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+#endif
+
+
+        varying float openfl_Alphav;
+		varying vec4 openfl_ColorMultiplierv;
+		varying vec4 openfl_ColorOffsetv;
+		varying vec2 openfl_TextureCoordv;
+
+		uniform bool openfl_HasColorTransform;
+		uniform vec2 openfl_TextureSize;
+		uniform sampler2D bitmap;
+
+		uniform bool hasTransform;
+		uniform bool hasColorTransform;
+
+		vec4 flixel_texture2D(sampler2D bitmap, vec2 coord)
+		{
+			vec4 color = texture2D(bitmap, coord);
+			if (!hasTransform)
+			{
+				return color;
+			}
+
+			if (color.a == 0.0)
+			{
+				return vec4(0.0, 0.0, 0.0, 0.0);
+			}
+
+			if (!hasColorTransform)
+			{
+				return color * openfl_Alphav;
+			}
+
+			color = vec4(color.rgb / color.a, color.a);
+
+			mat4 colorMultiplier = mat4(0);
+			colorMultiplier[0][0] = openfl_ColorMultiplierv.x;
+			colorMultiplier[1][1] = openfl_ColorMultiplierv.y;
+			colorMultiplier[2][2] = openfl_ColorMultiplierv.z;
+			colorMultiplier[3][3] = openfl_ColorMultiplierv.w;
+
+			color = clamp(openfl_ColorOffsetv + (color * colorMultiplier), 0.0, 1.0);
+
+			if (color.a > 0.0)
+			{
+				return vec4(color.rgb * color.a * openfl_Alphav, color.a * openfl_Alphav);
+			}
+			return vec4(0.0, 0.0, 0.0, 0.0);
+		}
+	
+
+
+        uniform vec2 size;
+        uniform vec4 color;
+
+        void main()
+        {
+            vec4 gay = flixel_texture2D(bitmap, openfl_TextureCoordv);
+            if (gay.a == 0.) {
+                float w = size.x / openfl_TextureSize.x;
+                float h = size.y / openfl_TextureSize.y;
+
+                if (flixel_texture2D(bitmap, vec2(openfl_TextureCoordv.x + w, openfl_TextureCoordv.y)).a != 0.
+                || flixel_texture2D(bitmap, vec2(openfl_TextureCoordv.x - w, openfl_TextureCoordv.y)).a != 0.
+                || flixel_texture2D(bitmap, vec2(openfl_TextureCoordv.x, openfl_TextureCoordv.y + h)).a != 0.
+                || flixel_texture2D(bitmap, vec2(openfl_TextureCoordv.x, openfl_TextureCoordv.y - h)).a != 0.)
+                    gay = color;
+            }
+            gl_FragColor = gay;
+        }
+    
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+source/mikolka/funkin/FunkinSound.hx:96: mods/HRK's Fun Charts/songs/quantum-zereimagined/Inst.ogg
+source/mikolka/funkin/FunkinSound.hx:113: Internal failure loading instrumentals for quantum-zereimagined "mods/HRK's Fun Charts/songs/quantum-zereimagined/Inst.ogg"
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+source/mikolka/funkin/FunkinSound.hx:96: mods/HRK's Fun Charts/songs/Millonennium/Inst.ogg
+source/mikolka/funkin/FunkinSound.hx:113: Internal failure loading instrumentals for Millonennium "mods/HRK's Fun Charts/songs/Millonennium/Inst.ogg"
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+source/mikolka/funkin/FunkinSound.hx:96: mods/HRK's Fun Charts/songs/Walker_V2/Inst.ogg
+source/mikolka/funkin/FunkinSound.hx:113: Internal failure loading instrumentals for Walker_V2 "mods/HRK's Fun Charts/songs/Walker_V2/Inst.ogg"
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+Walker_V2, 272
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+source/mikolka/funkin/FunkinSound.hx:96: mods/HRK's Fun Charts/songs/Crestfallen_to_a_point_of_rage/Inst.ogg
+source/mikolka/funkin/FunkinSound.hx:113: Internal failure loading instrumentals for Crestfallen_to_a_point_of_rage "mods/HRK's Fun Charts/songs/Crestfallen_to_a_point_of_rage/Inst.ogg"
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+Crestfallen_to_a_point_of_rage, 473
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+source/mikolka/funkin/FunkinSound.hx:96: mods/HRK's Fun Charts/songs/Azurephobia/Inst.ogg
+source/mikolka/funkin/FunkinSound.hx:113: Internal failure loading instrumentals for Azurephobia "mods/HRK's Fun Charts/songs/Azurephobia/Inst.ogg"
+Azurephobia, 140
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+source/mikolka/funkin/FunkinSound.hx:96: mods/HRK's Fun Charts/songs/Crestfallen_to_a_point_of_rage/Inst.ogg
+Crestfallen_to_a_point_of_rage, 473
+source/mikolka/funkin/FunkinSound.hx:117: Sound length: 0
+source/mikolka/funkin/FunkinSound.hx:119: No size loaded instrumentals for Crestfallen_to_a_point_of_rage "mods/HRK's Fun Charts/songs/Crestfallen_to_a_point_of_rage/Inst.ogg"
+didPlay?: No
+source/mikolka/vslice/freeplay/FreeplayState.hx:2296: Preview Cancelled
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+source/mikolka/funkin/FunkinSound.hx:96: mods/HRK's Fun Charts/songs/God_of_the_underworld/Inst.ogg
+source/mikolka/funkin/FunkinSound.hx:113: Internal failure loading instrumentals for God_of_the_underworld "mods/HRK's Fun Charts/songs/God_of_the_underworld/Inst.ogg"
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+God_of_the_underworld, 522
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+source/mikolka/funkin/FunkinSound.hx:96: mods/HRK's Fun Charts/songs/Azurephobia/Inst.ogg
+Azurephobia, 140
+source/mikolka/funkin/FunkinSound.hx:117: Sound length: 0
+source/mikolka/funkin/FunkinSound.hx:119: No size loaded instrumentals for Azurephobia "mods/HRK's Fun Charts/songs/Azurephobia/Inst.ogg"
+didPlay?: No
+source/mikolka/vslice/freeplay/FreeplayState.hx:2296: Preview Cancelled
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+source/mikolka/funkin/FunkinSound.hx:96: mods/HRK's Fun Charts/songs/Fabricator_of_terror/Inst.ogg
+source/mikolka/funkin/FunkinSound.hx:113: Internal failure loading instrumentals for Fabricator_of_terror "mods/HRK's Fun Charts/songs/Fabricator_of_terror/Inst.ogg"
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+Fabricator_of_terror, 234
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+source/mikolka/funkin/FunkinSound.hx:96: mods/HRK's Fun Charts/songs/miscreancy/Inst.ogg
+source/mikolka/funkin/FunkinSound.hx:113: Internal failure loading instrumentals for miscreancy "mods/HRK's Fun Charts/songs/miscreancy/Inst.ogg"
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+miscreancy, 735
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+source/mikolka/funkin/FunkinSound.hx:96: mods/HRK's Fun Charts/songs/Are_you_serious/Inst.ogg
+source/mikolka/funkin/FunkinSound.hx:113: Internal failure loading instrumentals for Are_you_serious "mods/HRK's Fun Charts/songs/Are_you_serious/Inst.ogg"
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+Are_you_serious, 800
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+source/mikolka/funkin/FunkinSound.hx:96: mods/HRK's Fun Charts/songs/miscreancy/Inst.ogg
+miscreancy, 735
+source/mikolka/funkin/FunkinSound.hx:117: Sound length: 0
+source/mikolka/funkin/FunkinSound.hx:119: No size loaded instrumentals for miscreancy "mods/HRK's Fun Charts/songs/miscreancy/Inst.ogg"
+didPlay?: No
+source/mikolka/vslice/freeplay/FreeplayState.hx:2296: Preview Cancelled
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+source/mikolka/funkin/FunkinSound.hx:96: mods/HRK's Fun Charts/songs/Fabricator_of_terror/Inst.ogg
+Fabricator_of_terror, 234
+source/mikolka/funkin/FunkinSound.hx:117: Sound length: 0
+source/mikolka/funkin/FunkinSound.hx:119: No size loaded instrumentals for Fabricator_of_terror "mods/HRK's Fun Charts/songs/Fabricator_of_terror/Inst.ogg"
+didPlay?: No
+source/mikolka/vslice/freeplay/FreeplayState.hx:2296: Preview Cancelled
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle
+source/mikolka/vslice/freeplay/DJBoyfriend.hx:253: Finished idle

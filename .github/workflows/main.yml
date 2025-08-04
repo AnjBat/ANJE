@@ -1,0 +1,61 @@
+name: Build-Windows
+
+on:
+  push:
+    branches: [main, experimental]
+  pull_request:
+    branches: [main, experimental]
+  workflow_dispatch:
+  schedule:
+    - cron: '0 3 * * *'  # Runs every day at 3 AM UTC to clean up
+
+jobs:
+  buildWindows:
+    name: Build on Windows
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.1.7
+
+      - name: Set up Haxe
+        uses: krdlab/setup-haxe@master
+        with:
+          haxe-version: 4.3.4
+
+      - name: Install Haxelib and dependencies
+        run: |
+          haxelib setup C:/haxelib
+          haxelib install hxcpp > nul
+          .\setup\windows.bat
+        shell: cmd
+
+      - name: Skip SScript setup mode
+        run: echo oy9:showMacroty8:loopCosti25y10:includeAllfg >> %USERPROFILE%\settings.cocoa
+        shell: cmd
+
+      - name: Create version tag
+        run: echo ${{ github.run_id }} > VERSION
+        shell: bash
+
+      - name: Compile
+        run: haxelib run lime build windows --app-version="4.0.0-${{ github.run_id }}" -D officialBuild
+
+      - name: Publish artifact
+        uses: actions/upload-artifact@v4.3.4
+        with:
+          name: windowsBuild
+          path: export/release/windows/bin
+
+  cleanupArtifacts:
+    name: Cleanup Old Workflow Runs
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Delete Old Workflow Runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          retain_days: 7
+          keep_minimum_runs: 5
