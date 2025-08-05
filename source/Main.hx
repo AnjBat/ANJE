@@ -34,6 +34,7 @@ import lime.graphics.Image;
 	#define GAMEMODE_AUTO
 ')
 #end
+
 class Main extends Sprite
 {
 	var game = {
@@ -160,10 +161,14 @@ class Main extends Sprite
 		FlxG.mouse.visible = false;
 		#end
 
-		// ✅ Lock FPS to 60
+		// ✅ Lock FPS to 60 and optimize performance
 		FlxG.fixedTimestep = true;
 		FlxG.updateFramerate = 60;
 		FlxG.drawFramerate = 60;
+
+		// Use hardware rendering and prevent auto pause on focus loss to reduce lag
+		FlxG.renderBlit = false;
+		FlxG.autoPause = false;
 
 		FlxG.game.focusLostFramerate = #if mobile 30 #else 60 #end;
 
