@@ -1,5 +1,8 @@
 package shaders;
 import objects.Note;
+import flixel.FlxSprite;
+import flixel.util.FlxColor;
+import flixel.math.FlxMath;
 
 class RGBPalette {
 	public var shader(default, null):RGBPaletteShader = new RGBPaletteShader();
@@ -53,6 +56,7 @@ class RGBShaderReference
 	public var parent:RGBPalette;
 	private var _owner:FlxSprite;
 	private var _original:RGBPalette;
+
 	public function new(owner:FlxSprite, ref:RGBPalette)
 	{
 		parent = ref;
@@ -111,6 +115,17 @@ class RGBShaderReference
 			_owner.shader = parent.shader;
 			//trace('created new shader');
 		}
+	}
+
+	// --- NEW METHOD TO TURN OFF THE RGB EFFECT ---
+	public function turnOff():Void {
+		// Option 1: Disable shader completely
+		_owner.shader = null;
+		enabled = false;
+		
+		// Option 2 (alternative): Just set multiplier to zero to disable color effect but keep shader attached
+		// mult = 0;
+		// enabled = false;
 	}
 }
 
