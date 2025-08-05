@@ -34,17 +34,16 @@ import lime.graphics.Image;
 	#define GAMEMODE_AUTO
 ')
 #end
-
 class Main extends Sprite
 {
 	var game = {
-		width: 1280,
-		height: 720,
-		initialState: TitleState,
-		zoom: -1.0,
-		framerate: 60,
-		skipSplash: true,
-		startFullscreen: false
+		width: 1280, // WINDOW width
+		height: 720, // WINDOW height
+		initialState: TitleState, // initial game state
+		zoom: -1.0, // game state bounds
+		framerate: 60, // default framerate
+		skipSplash: true, // if the default flixel splash screen should be skipped
+		startFullscreen: false // if the game should start at fullscreen mode
 	};
 
 	public static var fpsBg:FPSBg;
@@ -52,6 +51,8 @@ class Main extends Sprite
 
 	public static var isConsoleAvailable:Bool = true;
 	public static final platform:String = #if mobile "Phones" #else "PCs" #end;
+
+	// You can pretty much ignore everything from here on - your code should go in your states.
 
 	public static function main():Void
 	{
@@ -64,7 +65,7 @@ class Main extends Sprite
 		#if desktop
 		try {
 			Sys.stdout().writeString("Console Available!\n");
-		} catch (e:Dynamic) { isConsoleAvailable = false; }
+		} catch (e:Dynamic) {isConsoleAvailable = false;}
 		#else
 		isConsoleAvailable = false;
 		#end
@@ -80,8 +81,8 @@ class Main extends Sprite
 		@:functionCode("
 			#include <windows.h>
 			#include <winuser.h>
-			setProcessDPIAware();
-			DisableProcessWindowsGhosting();
+			setProcessDPIAware() // allows for more crisp visuals
+			DisableProcessWindowsGhosting() // lets you move the window and such if it's not responding
 		")
 		#end
 
@@ -141,37 +142,40 @@ class Main extends Sprite
 		#if ACHIEVEMENTS_ALLOWED Achievements.load(); #end
 		
 		var gameObject = new FlxGame(game.width, game.height, #if COPYSTATE_ALLOWED !CopyState.checkExistingFiles() ? CopyState : #end game.initialState, #if (flixel < "5.0.0") game.zoom, #end game.framerate, game.framerate, game.skipSplash, game.startFullscreen);
-		@:privateAccess
-		gameObject._customSoundTray = mikolka.vslice.components.FunkinSoundTray;
+		// FlxG.game._customSoundTray wants just the class, it calls new from
+    	// create() in there, which gets called when it's added to stage
+    	// which is why it needs to be added before addChild(game) here
+    	@:privateAccess
+    	gameObject._customSoundTray = mikolka.vslice.components.FunkinSoundTray;
 
 		addChild(gameObject);
 
 		fpsBg = new FPSBg();
 		fpsVar = new FPSCounter(6, 1, 0xFFFFFF);
+		// #if mobile
+		// FlxG.game.addChild(fpsBg);
+		// FlxG.game.addChild(fpsVar);
+		// #else
 		addChild(fpsBg);
 		addChild(fpsVar);
+		// #end
 		
 		Lib.current.stage.align = "tl";
 		Lib.current.stage.scaleMode = StageScaleMode.NO_SCALE;
-		if (fpsVar != null) fpsVar.visible = ClientPrefs.data.showFPS;
-		if (fpsBg != null) fpsBg.visible = ClientPrefs.data.showFPS;
+		if(fpsVar != null) fpsVar.visible = ClientPrefs.data.showFPS;
+		if(fpsBg != null) fpsBg.visible = ClientPrefs.data.showFPS;
+
+		// #if debug
+		// flixel.addons.studio.FlxStudio.create();
+		// #end
 
 		#if html5
 		FlxG.autoPause = false;
 		FlxG.mouse.visible = false;
 		#end
 
-		// ✅ Lock FPS to 60 and optimize performance
-		FlxG.fixedTimestep = true;
-		FlxG.updateFramerate = 60;
-		FlxG.drawFramerate = 60;
-
-		// Use hardware rendering and prevent auto pause on focus loss to reduce lag
-		FlxG.renderBlit = false;
-		FlxG.autoPause = false;
-
+		FlxG.fixedTimestep = false;
 		FlxG.game.focusLostFramerate = #if mobile 30 #else 60 #end;
-
 		#if web
 		FlxG.keys.preventDefaultKeys.push(TAB);
 		#else
@@ -189,6 +193,7 @@ class Main extends Sprite
 		FlxG.scaleMode = new MobileScaleMode();
 		#end
 
+		// shader coords fix
 		FlxG.signals.gameResized.add(function(w, h)
 		{
 			if (FlxG.cameras != null)
