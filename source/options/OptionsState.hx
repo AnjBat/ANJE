@@ -18,7 +18,7 @@ class OptionsState extends MusicBeatState
 		'Note Colors',
 		'Controls',
 		'Adjust Delay and Combo',
-		'Optimizer',
+		'Optimization',
 		'Graphics',
 		'Visuals',
 		'Gameplay',
@@ -53,7 +53,7 @@ class OptionsState extends MusicBeatState
 				}
 				else
 					openSubState(new options.ControlsSubState());
-			case 'Optimizer':
+			case 'Optimization':
 				openSubState(new options.OptimizeSettingsSubState());
 			case 'Graphics':
 				openSubState(new options.GraphicsSettingsSubState());
